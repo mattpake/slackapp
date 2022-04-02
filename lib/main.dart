@@ -16,10 +16,10 @@ class MyApp extends StatelessWidget {
       title: 'Slack App',
       initialRoute: '/',
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
         '/': (context) => const MyHomePage(title: 'Home Page'),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/person-screen': (context) => const PersonScreen(title: '',),
+        //https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments
+        PersonScreen.routeName: (context) =>
+        const PersonScreen(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,

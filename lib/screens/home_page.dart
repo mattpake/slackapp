@@ -1,5 +1,7 @@
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:slackapp/dto/screen_arguments.dart';
+import 'package:slackapp/screens/person_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -47,7 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     leading: const Icon(Icons.account_box_outlined),
                     title: const Text('Person name'),
                     onTap: () {
-                      Navigator.pushNamed(context, '/person-screen');
+                      Navigator.pushNamed(
+                        context,
+                        PersonScreen.routeName,
+                        arguments: ScreenArguments(widget.title, 'message'),
+                      );
                     },
                   );
                 },

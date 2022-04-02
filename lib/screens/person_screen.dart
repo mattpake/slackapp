@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:slackapp/dto/screen_arguments.dart';
 
 class PersonScreen extends StatelessWidget {
-  const PersonScreen({Key? key, required this.title}) : super(key: key);
+  const PersonScreen({Key? key}) : super(key: key);
 
-  final String title;
+  static const routeName = '/person-screen';
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(args.title),
       ),
       body: Container(),
     );
