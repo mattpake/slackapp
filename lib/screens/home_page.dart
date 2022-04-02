@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
           ),
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height / 1.5,
             child: SingleChildScrollView(
               child: ListView.builder(
@@ -43,9 +43,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 scrollDirection: Axis.vertical,
                 itemCount: 20,
                 itemBuilder: (BuildContext context, int index) {
-                  return const ListTile(
-                    leading: Icon(Icons.account_box_outlined),
-                    title: Text('Person name'),
+                  return ListTile(
+                    leading: const Icon(Icons.account_box_outlined),
+                    title: const Text('Person name'),
+                    onTap: () {
+                      Navigator.pushNamed(context, '/person-screen');
+                    },
                   );
                 },
               ),
