@@ -14,7 +14,79 @@ class PersonScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(args.title),
       ),
-      body: Container(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              width: 200,
+              color: Colors.grey,
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Message 1',
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                ),
+              ),
+            ),
+            Container(
+              width: 200,
+              color: Colors.grey,
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Message 2',
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                ),
+              ),
+            ),
+            Container(
+              width: 200,
+              color: Colors.grey,
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Message 3',
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                ),
+              ),
+            ),
+            Container(
+              width: 200,
+              color: Colors.grey,
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Message 4',
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                ),
+              ),
+            ),
+            Container(
+              width: 200,
+              color: Colors.grey,
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Message 5',
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                ),
+              ),
+            ),
+            Container(
+              width: 200,
+              color: Colors.grey,
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  'Message 6',
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

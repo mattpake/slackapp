@@ -30,6 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   anim_search_bar: ^2.0.2
+  http: ^0.13.4
 
 
 
