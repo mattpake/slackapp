@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:slackapp/controller/sendMessageToChannel.dart';
 import 'package:slackapp/dto/screen_arguments.dart';
+import 'package:http/http.dart' as http;
 
-class PersonScreen extends StatelessWidget {
+class PersonScreen extends StatefulWidget {
   const PersonScreen({Key? key}) : super(key: key);
 
   static const routeName = '/person-screen';
+
+  @override
+  State<PersonScreen> createState() => _PersonScreenState();
+}
+
+class _PersonScreenState extends State<PersonScreen> {
+  Future<http.Response>? _messageResponse;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +30,10 @@ class PersonScreen extends StatelessWidget {
             Container(
               width: 200,
               color: Colors.grey,
-              child: TextButton(
-                onPressed: () {},
+              child: ElevatedButton(
+                onPressed: () {
+                  sendMessage('Message 1');
+                },
                 child: const Text(
                   'Message 1',
                   style: TextStyle(fontSize: 20, color: Colors.black),
