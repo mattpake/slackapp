@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slackapp/controller/sendDirectMessage.dart';
 import 'package:slackapp/controller/sendMessageToChannel.dart';
 import 'package:slackapp/dto/screen_arguments.dart';
 import 'package:http/http.dart' as http;
@@ -33,6 +34,7 @@ class _PersonScreenState extends State<PersonScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   sendMessage('Message 1');
+                  sendDirectMessage('Message DM', 'U039C5CRYMS');
                 },
                 child: const Text(
                   'Message 1',
