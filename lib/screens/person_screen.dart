@@ -30,69 +30,31 @@ class _PersonScreenState extends State<PersonScreen> {
           children: [
             Container(
               width: 200,
+              height: MediaQuery.of(context).size.height / 4,
               color: Colors.grey,
-              child: ElevatedButton(
+              child: TextButton(
                 onPressed: () {
-                  sendMessage('Message 1');
-                  sendDirectMessage('Message DM', 'U039C5CRYMS');
+                  sendMessage('Message "You have delivery" send to ${args.member.name}');
+                  sendDirectMessage(
+                      'You have order and delivery waiting at reception.', args.member.id);
                 },
                 child: const Text(
-                  'Message 1',
+                  'Package',
                   style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ),
             ),
             Container(
               width: 200,
+              height: MediaQuery.of(context).size.height / 4,
               color: Colors.grey,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  sendMessage('Message "Candidate waiting"send to ${args.member.name}');
+                  sendDirectMessage('Candidate is waiting at the reception.', args.member.id);
+                },
                 child: const Text(
-                  'Message 2',
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ),
-              ),
-            ),
-            Container(
-              width: 200,
-              color: Colors.grey,
-              child: TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Message 3',
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ),
-              ),
-            ),
-            Container(
-              width: 200,
-              color: Colors.grey,
-              child: TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Message 4',
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ),
-              ),
-            ),
-            Container(
-              width: 200,
-              color: Colors.grey,
-              child: TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Message 5',
-                  style: TextStyle(fontSize: 20, color: Colors.black),
-                ),
-              ),
-            ),
-            Container(
-              width: 200,
-              color: Colors.grey,
-              child: TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Message 6',
+                  'Interview',
                   style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ),

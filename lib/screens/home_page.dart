@@ -119,7 +119,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 Navigator.pushNamed(
                                   context,
                                   PersonScreen.routeName,
-                                  arguments: ScreenArguments(widget.title, 'message'),
+                                  arguments:
+                                      ScreenArguments(widget.title, 'message', members[index]),
                                 );
                               },
                             );
