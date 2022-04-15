@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:slackapp/hex_colors.dart';
 import 'package:slackapp/screens/home_page.dart';
 import 'package:slackapp/screens/person_screen.dart';
 
@@ -18,11 +19,12 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(title: 'Home Page'),
         //https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments
-        PersonScreen.routeName: (context) =>
-        const PersonScreen(),
+        PersonScreen.routeName: (context) => const PersonScreen(),
       },
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+          primary: blueColor,
+        ),
       ),
     );
   }

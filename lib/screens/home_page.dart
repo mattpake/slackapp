@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:slackapp/controller/getMembersList.dart';
+import 'package:slackapp/controller/get_members_list.dart';
 import 'package:slackapp/dto/member.dart';
 import 'package:slackapp/dto/screen_arguments.dart';
+import 'package:slackapp/hex_colors.dart';
 import 'package:slackapp/screens/person_screen.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -20,9 +21,19 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Member> membersDuplicate = [];
   bool isSearchResult = true;
 
+  final List<FocusNode> _focusNodes = [
+    FocusNode(),
+    FocusNode(),
+  ];
+
   @override
   void initState() {
     getMembers();
+    for (var node in _focusNodes) {
+      node.addListener(() {
+        setState(() {});
+      });
+    }
     super.initState();
   }
 
@@ -76,22 +87,32 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        toolbarHeight: 0.0,
+        backgroundColor: orangeColor,
       ),
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: TextField(
+              focusNode: _focusNodes[0],
               onChanged: (value) {
                 filterSearchResults(value);
               },
               controller: textController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: "Search",
                 hintText: "Search",
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    'assets/images/searchIconHeureka.png',
+                    width: 20,
+                    height: 20,
+                    color: _focusNodes[0].hasFocus ? orangeColor : Colors.grey,
+                  ),
+                ),
+                border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(25.0),
                   ),
@@ -104,27 +125,30 @@ class _MyHomePageState extends State<MyHomePage> {
               if (members.isNotEmpty) {
                 return Column(
                   children: [
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height / 1.5,
-                      child: SingleChildScrollView(
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemCount: members.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return ListTile(
-                              leading: const Icon(Icons.account_box_outlined),
-                              title: Text(members[index].name),
-                              onTap: () {
-                                Navigator.pushNamed(
-                                  context,
-                                  PersonScreen.routeName,
-                                  arguments:
-                                      ScreenArguments(widget.title, 'message', members[index]),
-                                );
-                              },
-                            );
-                          },
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height / 1.5,
+                        child: SingleChildScrollView(
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: members.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return ListTile(
+                                leading: const Icon(Icons.account_box_outlined),
+                                title: Text(members[index].name),
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    PersonScreen.routeName,
+                                    arguments:
+                                        ScreenArguments(widget.title, 'message', members[index]),
+                                  );
+                                },
+                              );
+                            },
+                          ),
                         ),
                       ),
                     )
