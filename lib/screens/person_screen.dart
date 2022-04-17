@@ -1,4 +1,3 @@
-import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:slackapp/controller/send_direct_message.dart';
 import 'package:slackapp/controller/send_message_to_channel.dart';
@@ -43,42 +42,97 @@ class _PersonScreenState extends State<PersonScreen> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 50.0, bottom: 50),
-                  child: ClayContainer(
-                    curveType: CurveType.none,
-                    borderRadius: 25,
-                    width: MediaQuery.of(context).size.width / 1.2,
-                    height: MediaQuery.of(context).size.height / 4,
-                    color: whiteColor,
-                    child: TextButton(
-                      onPressed: () {
-                        sendMessage('Message "You have delivery" send to ${args.member.name}');
-                        sendDirectMessage(
-                            'You have order and delivery waiting at reception.', args.member.id);
-                      },
-                      child: const Text(
-                        'Package',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
+                  child: GestureDetector(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                        color: whiteColor,
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 10,
+                            offset: Offset(0.2, 2), // Shadow position
+                          ),
+                        ],
+                      ),
+                      width: MediaQuery.of(context).size.width / 1.2,
+                      height: MediaQuery.of(context).size.height / 4,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(25),
+                              topRight: Radius.circular(25),
+                            ),
+                            child: Image.asset(
+                              'assets/images/package.jpeg',
+                              fit: BoxFit.cover,
+                              height: MediaQuery.of(context).size.height / 5,
+                              width: MediaQuery.of(context).size.width / 1.2,
+                            ),
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 38.0, top: 8.0),
+                            child: Text(
+                              'Package',
+                              style: TextStyle(fontSize: 20, color: Colors.black),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
+                    onTap: () {
+                      sendMessage('Message "You have delivery" send to ${args.member.name}');
+                      sendDirectMessage(
+                          'You have order and delivery waiting at reception.', args.member.id);
+                    },
                   ),
                 ),
-                // SizedBox(height: 50,),
-                ClayContainer(
-                  curveType: CurveType.none,
-                  borderRadius: 25,
-                  width: MediaQuery.of(context).size.width / 1.2,
-                  height: MediaQuery.of(context).size.height / 4,
-                  color: whiteColor,
-                  child: TextButton(
-                    onPressed: () {
-                      sendMessage('Message "Candidate waiting"send to ${args.member.name}');
-                      sendDirectMessage('Candidate is waiting at the reception.', args.member.id);
-                    },
-                    child: const Text(
-                      'Interview',
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                GestureDetector(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      color: whiteColor,
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.grey,
+                          blurRadius: 10,
+                          offset: Offset(0.2, 2), // Shadow position
+                        ),
+                      ],
+                    ),
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    height: MediaQuery.of(context).size.height / 4,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(25),
+                            topRight: Radius.circular(25),
+                          ),
+                          child: Image.asset(
+                            'assets/images/interview.jpg',
+                            fit: BoxFit.cover,
+                            height: MediaQuery.of(context).size.height / 5,
+                            width: MediaQuery.of(context).size.width / 1.2,
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 38.0, top: 8.0),
+                          child: Text(
+                            'Interview',
+                            style: TextStyle(fontSize: 20, color: Colors.black),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
+                  onTap: () {
+                    sendMessage('Message "Candidate waiting"send to ${args.member.name}');
+                    sendDirectMessage('Candidate is waiting at the reception.', args.member.id);
+                  },
                 ),
               ],
             ),
