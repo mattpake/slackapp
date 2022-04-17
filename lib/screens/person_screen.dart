@@ -1,7 +1,9 @@
+import 'package:clay_containers/clay_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:slackapp/controller/send_direct_message.dart';
 import 'package:slackapp/controller/send_message_to_channel.dart';
 import 'package:slackapp/dto/screen_arguments.dart';
+import 'package:slackapp/hex_colors.dart';
 
 class PersonScreen extends StatefulWidget {
   const PersonScreen({Key? key}) : super(key: key);
@@ -18,9 +20,10 @@ class _PersonScreenState extends State<PersonScreen> {
     final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
 
     return Scaffold(
+      backgroundColor: whiteColor,
       appBar: AppBar(
-        // title: Text(args.title),
         toolbarHeight: 0.0,
+        backgroundColor: orangeColor,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,26 +41,34 @@ class _PersonScreenState extends State<PersonScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  width: 200,
-                  height: MediaQuery.of(context).size.height / 4,
-                  color: Colors.grey,
-                  child: TextButton(
-                    onPressed: () {
-                      sendMessage('Message "You have delivery" send to ${args.member.name}');
-                      sendDirectMessage(
-                          'You have order and delivery waiting at reception.', args.member.id);
-                    },
-                    child: const Text(
-                      'Package',
-                      style: TextStyle(fontSize: 20, color: Colors.black),
+                Padding(
+                  padding: const EdgeInsets.only(top: 50.0, bottom: 50),
+                  child: ClayContainer(
+                    curveType: CurveType.none,
+                    borderRadius: 25,
+                    width: MediaQuery.of(context).size.width / 1.2,
+                    height: MediaQuery.of(context).size.height / 4,
+                    color: whiteColor,
+                    child: TextButton(
+                      onPressed: () {
+                        sendMessage('Message "You have delivery" send to ${args.member.name}');
+                        sendDirectMessage(
+                            'You have order and delivery waiting at reception.', args.member.id);
+                      },
+                      child: const Text(
+                        'Package',
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  width: 200,
+                // SizedBox(height: 50,),
+                ClayContainer(
+                  curveType: CurveType.none,
+                  borderRadius: 25,
+                  width: MediaQuery.of(context).size.width / 1.2,
                   height: MediaQuery.of(context).size.height / 4,
-                  color: Colors.grey,
+                  color: whiteColor,
                   child: TextButton(
                     onPressed: () {
                       sendMessage('Message "Candidate waiting"send to ${args.member.name}');

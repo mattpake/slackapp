@@ -86,6 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: whiteColor,
       appBar: AppBar(
         toolbarHeight: 0.0,
         backgroundColor: orangeColor,
@@ -136,7 +137,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             itemCount: members.length,
                             itemBuilder: (BuildContext context, int index) {
                               return ListTile(
-                                leading: const Icon(Icons.account_box_outlined),
+                                leading: Image.asset(
+                                  'assets/images/user.png',
+                                  width: 30,
+                                  height: 30,
+                                  color: Colors.grey,
+                                ),
                                 title: Text(members[index].name),
                                 onTap: () {
                                   Navigator.pushNamed(
