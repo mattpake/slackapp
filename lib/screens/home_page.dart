@@ -30,9 +30,11 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     getMembers();
     for (var node in _focusNodes) {
-      node.addListener(() {
-        setState(() {});
-      });
+      node.addListener(
+        () {
+          setState(() {});
+        },
+      );
     }
     super.initState();
   }
@@ -166,14 +168,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                       endIndent: 18,
                                       thickness: 1,
                                       color: Colors.grey,
-                                    )
+                                    ),
                                 ],
                               );
                             },
                           ),
                         ),
                       ),
-                    )
+                    ),
                   ],
                 );
               } else if (isSearchResult) {
