@@ -13,5 +13,6 @@ class HexColor extends Color {
 }
 
 Color blueColor = HexColor("30a9d4");
+Color blueColorPersonIcon = HexColor('#0098cd');
 Color orangeColor = HexColor("ff7a04");
 Color whiteColor = const Color(0xFFF2F2F2);

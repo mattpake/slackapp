@@ -136,22 +136,38 @@ class _MyHomePageState extends State<MyHomePage> {
                             scrollDirection: Axis.vertical,
                             itemCount: members.length,
                             itemBuilder: (BuildContext context, int index) {
-                              return ListTile(
-                                leading: Image.asset(
-                                  'assets/images/user.png',
-                                  width: 30,
-                                  height: 30,
-                                  color: Colors.grey,
-                                ),
-                                title: Text(members[index].name),
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                    context,
-                                    PersonScreen.routeName,
-                                    arguments:
-                                        ScreenArguments(widget.title, 'message', members[index]),
-                                  );
-                                },
+                              return Column(
+                                children: [
+                                  ListTile(
+                                    leading: Image.asset(
+                                      'assets/images/user-profile.png',
+                                      width: 30,
+                                      height: 30,
+                                      color: blueColorPersonIcon,
+                                    ),
+                                    title: Text(
+                                      members[index].name,
+                                      style: const TextStyle(
+                                          color: Colors.black, fontWeight: FontWeight.bold),
+                                    ),
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        PersonScreen.routeName,
+                                        arguments: ScreenArguments(
+                                            widget.title, 'message', members[index]),
+                                      );
+                                    },
+                                  ),
+                                  if (members.length != index + 1)
+                                    const Divider(
+                                      height: 0,
+                                      indent: 18,
+                                      endIndent: 18,
+                                      thickness: 1,
+                                      color: Colors.grey,
+                                    )
+                                ],
                               );
                             },
                           ),
