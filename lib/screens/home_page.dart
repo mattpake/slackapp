@@ -6,9 +6,9 @@ import 'package:slackapp/hex_colors.dart';
 import 'package:slackapp/screens/person_screen.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
-  final String title;
+  static const routeName = '/home-page';
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -156,8 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       Navigator.pushNamed(
                                         context,
                                         PersonScreen.routeName,
-                                        arguments: ScreenArguments(
-                                            widget.title, 'message', members[index]),
+                                        arguments: ScreenArguments(members[index]),
                                       );
                                     },
                                   ),

@@ -1,6 +1,8 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:slackapp/hex_colors.dart';
 import 'package:slackapp/screens/home_page.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:slackapp/screens/person_screen.dart';
 
 void main() {
@@ -17,8 +19,16 @@ class MyApp extends StatelessWidget {
       title: 'Slack App',
       initialRoute: '/',
       routes: {
-        '/': (context) => const MyHomePage(title: 'Home Page'),
+        '/': (context) => AnimatedSplashScreen(
+              splash: Image.asset('assets/images/searchIconHeureka.png'),
+              duration: 1500,
+              nextScreen: const MyHomePage(),
+              splashTransition: SplashTransition.fadeTransition,
+              splashIconSize: 200,
+              pageTransitionType: PageTransitionType.rightToLeft,
+            ),
         //https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments
+        MyHomePage.routeName: (context) => const MyHomePage(),
         PersonScreen.routeName: (context) => const PersonScreen(),
       },
       theme: ThemeData(
