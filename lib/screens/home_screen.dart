@@ -5,16 +5,16 @@ import 'package:slackapp/dto/screen_arguments.dart';
 import 'package:slackapp/hex_colors.dart';
 import 'package:slackapp/screens/person_screen.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   static const routeName = '/home-page';
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   TextEditingController textController = TextEditingController();
 
   List<Member> members = [];
