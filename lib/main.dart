@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:slackapp/hex_colors.dart';
+import 'package:slackapp/screens/authentication_screen.dart';
 import 'package:slackapp/screens/home_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:slackapp/screens/person_screen.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         //https://docs.flutter.dev/cookbook/navigation/navigate-with-arguments
         HomeScreen.routeName: (context) => const HomeScreen(),
         PersonScreen.routeName: (context) => const PersonScreen(),
+        AuthenticationScreen.routeName: (context) => const AuthenticationScreen(),
       },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
