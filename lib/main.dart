@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => AnimatedSplashScreen(
               splash: Image.asset('assets/images/heureka_logo.png'),
               duration: 2000,
-              nextScreen: const HomeScreen(),
+              nextScreen: const AuthenticationScreen(),
               splashTransition: SplashTransition.fadeTransition,
               splashIconSize: 120,
               pageTransitionType: PageTransitionType.rightToLeft,
