@@ -1,13 +1,18 @@
 import 'dart:convert';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:slackapp/dto/member.dart';
 
 Future<List<Member>> fetchMembers() async {
+  const _storage = FlutterSecureStorage();
+  String? token;
+  await _storage.read(key: 'token').then((value) => token = value);
+
   final response = await http.get(
     Uri.parse('https://slack.com/api/users.list'),
-    headers: <String, String>{
+    headers: {
       'Content-Type': 'application/json; charset=UTF-8',
-      'Authorization': 'Bearer xoxb-3339602036704-3339756025056-54oEujKgCVXaTGznf8xIKaNG',
+      'Authorization': 'Bearer $token',
     },
   );
   if (response.statusCode == 200) {
@@ -19,6 +24,6 @@ Future<List<Member>> fetchMembers() async {
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
-    throw Exception('Failed to load album');
+    throw Exception('Failed to load member');
   }
 }

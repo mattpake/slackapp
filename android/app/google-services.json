@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "679118675463",
+    "project_id": "slackapp-17d8b",
+    "storage_bucket": "slackapp-17d8b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679118675463:android:aa35866e5fa4f878ae94a2",
+        "android_client_info": {
+          "package_name": "com.mattpake.slackapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "679118675463-rauvdbkeq17pl3m1s7gnqrb4jamouio1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mattpake.slackapp",
+            "certificate_hash": "9af6b878fc34532ba0864b5801fb56d2a98fe088"
+          }
+        },
+        {
+          "client_id": "679118675463-rpqg7tru76duigmd9jd2jacie5m21rra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZ_I3UA9B6WThHSwFkKmMC1zXea_s6-Fs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "679118675463-rpqg7tru76duigmd9jd2jacie5m21rra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
