@@ -93,105 +93,107 @@ class _HomeScreenState extends State<HomeScreen> {
         toolbarHeight: 0.0,
         backgroundColor: orangeColor,
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: TextField(
-              focusNode: _focusNodes[0],
-              onChanged: (value) {
-                filterSearchResults(value);
-              },
-              controller: textController,
-              decoration: InputDecoration(
-                labelText: "Search",
-                hintText: "Search",
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    'assets/images/searchIconHeureka.png',
-                    width: 20,
-                    height: 20,
-                    color: _focusNodes[0].hasFocus ? orangeColor : Colors.grey,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: TextField(
+                focusNode: _focusNodes[0],
+                onChanged: (value) {
+                  filterSearchResults(value);
+                },
+                controller: textController,
+                decoration: InputDecoration(
+                  labelText: "Search",
+                  hintText: "Search",
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      'assets/images/searchIconHeureka.png',
+                      width: 20,
+                      height: 20,
+                      color: _focusNodes[0].hasFocus ? orangeColor : Colors.grey,
+                    ),
                   ),
-                ),
-                border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(25.0),
+                  border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(25.0),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Builder(
-            builder: (context) {
-              if (members.isNotEmpty) {
-                return Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: SizedBox(
-                        height: MediaQuery.of(context).size.height / 1.5,
-                        child: SingleChildScrollView(
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: members.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return Column(
-                                children: [
-                                  ListTile(
-                                    leading: Image.asset(
-                                      'assets/images/user-profile.png',
-                                      width: 30,
-                                      height: 30,
-                                      color: blueColorPersonIcon,
+            Builder(
+              builder: (context) {
+                if (members.isNotEmpty) {
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height / 1.5,
+                          child: SingleChildScrollView(
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              itemCount: members.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Column(
+                                  children: [
+                                    ListTile(
+                                      leading: Image.asset(
+                                        'assets/images/user-profile.png',
+                                        width: 30,
+                                        height: 30,
+                                        color: blueColorPersonIcon,
+                                      ),
+                                      title: Text(
+                                        members[index].name,
+                                        style: const TextStyle(
+                                            color: Colors.black, fontWeight: FontWeight.bold),
+                                      ),
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                          context,
+                                          PersonScreen.routeName,
+                                          arguments: ScreenArguments(members[index]),
+                                        );
+                                      },
                                     ),
-                                    title: Text(
-                                      members[index].name,
-                                      style: const TextStyle(
-                                          color: Colors.black, fontWeight: FontWeight.bold),
-                                    ),
-                                    onTap: () {
-                                      Navigator.pushNamed(
-                                        context,
-                                        PersonScreen.routeName,
-                                        arguments: ScreenArguments(members[index]),
-                                      );
-                                    },
-                                  ),
-                                  if (members.length != index + 1)
-                                    const Divider(
-                                      height: 0,
-                                      indent: 18,
-                                      endIndent: 18,
-                                      thickness: 1,
-                                      color: Colors.grey,
-                                    ),
-                                ],
-                              );
-                            },
+                                    if (members.length != index + 1)
+                                      const Divider(
+                                        height: 0,
+                                        indent: 18,
+                                        endIndent: 18,
+                                        thickness: 1,
+                                        color: Colors.grey,
+                                      ),
+                                  ],
+                                );
+                              },
+                            ),
                           ),
                         ),
                       ),
+                    ],
+                  );
+                } else if (isSearchResult) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return const Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 30.0),
+                      child: Text('No search result'),
                     ),
-                  ],
-                );
-              } else if (isSearchResult) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              } else {
-                return const Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 30.0),
-                    child: Text('No search result'),
-                  ),
-                );
-              }
-            },
-          ),
-        ],
+                  );
+                }
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
